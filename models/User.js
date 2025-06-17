@@ -4,7 +4,7 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  watchlist: [{ contentId: String, type: String }],
+  watchlist: [{ contentId: String, type: { type: String, enum: ['movie', 'series', 'anime'] } }],
   playlists: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Playlist' }],
   friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],

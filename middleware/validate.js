@@ -37,3 +37,7 @@ export const playlistSchema = Joi.object({
   ),
   isPublic: Joi.boolean(),
 });
+
+export const watchlistSchema = Joi.object({
+  type: Joi.string().valid('movie', 'series', 'anime').required(),
+});

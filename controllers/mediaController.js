@@ -35,11 +35,14 @@ export const addToWatchlist = async (req, res) => {
   const { contentId } = req.params;
   const { type } = req.body;
   try {
+    if (!['movie', 'series', 'anime'].includes(type)) {
+      return res.status(400).json({ error: 'Invalid content type. Must be movie, series, or anime' });
+    }
     req.user.watchlist.push({ contentId, type });
     await req.user.save();
     res.json({ message: 'Added to watchlist' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to add to watchlist' });
+    res.status(500).json({ error: `Failed to add to watchlist: ${error.message}` });
   }
 };
 
