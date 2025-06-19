@@ -54,3 +54,7 @@ export const ratingSchema = Joi.object({
   contentType: Joi.string().valid('movie', 'series', 'anime').required(),
   rating: Joi.number().integer().min(1).max(10).required(),
 });
+
+export const profileSchema = Joi.object({
+  username: Joi.string().min(3).max(30).required(),
+});
