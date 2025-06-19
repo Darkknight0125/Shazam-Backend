@@ -11,6 +11,8 @@ import friendRoutes from './routes/friends.js';
 import forumRoutes from './routes/forums.js';
 import playlistRoutes from './routes/playlists.js';
 import aiRoutes from './routes/ai.js';
+import commentRoutes from './routes/comments.js';
+import ratingRoutes from './routes/ratings.js';
 
 config();
 
@@ -28,6 +30,8 @@ app.use('/api/friends', friendRoutes);
 app.use('/api/forums', forumRoutes);
 app.use('/api/playlists', playlistRoutes);
 app.use('/api/ai', aiRoutes);
+app.use('/api/comments', commentRoutes);
+app.use('/api/ratings', ratingRoutes);
 
 connectDB();
 connectRedis();

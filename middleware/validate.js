@@ -20,6 +20,7 @@ export const loginSchema = Joi.object({
 export const threadSchema = Joi.object({
   title: Joi.string().min(3).max(100).required(),
   contentType: Joi.string().valid('movie', 'series', 'anime').required(),
+  contentId: Joi.string(),
 });
 
 export const postSchema = Joi.object({
@@ -40,4 +41,16 @@ export const playlistSchema = Joi.object({
 
 export const watchlistSchema = Joi.object({
   type: Joi.string().valid('movie', 'series', 'anime').required(),
+});
+
+export const commentSchema = Joi.object({
+  contentId: Joi.string().required(),
+  contentType: Joi.string().valid('movie', 'series', 'anime').required(),
+  content: Joi.string().min(1).max(1000).required(),
+});
+
+export const ratingSchema = Joi.object({
+  contentId: Joi.string().required(),
+  contentType: Joi.string().valid('movie', 'series', 'anime').required(),
+  rating: Joi.number().integer().min(1).max(10).required(),
 });
