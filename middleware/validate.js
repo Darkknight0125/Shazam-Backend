@@ -35,8 +35,8 @@ export const playlistSchema = Joi.object({
       contentId: Joi.string().required(),
       type: Joi.string().valid('movie', 'series', 'anime').required(),
     })
-  ),
-  isPublic: Joi.boolean(),
+  ).optional(),
+  isPublic: Joi.required(),
 });
 
 export const watchlistSchema = Joi.object({
@@ -61,4 +61,9 @@ export const profileSchema = Joi.object({
 
 export const messageSchema = Joi.object({
   content: Joi.string().min(1).max(1000).required(),
+});
+
+export const mediaSchema = Joi.object({
+  contentId: Joi.string().required(),
+  contentType: Joi.string().valid('movie', 'series', 'anime').required(),
 });
