@@ -13,6 +13,7 @@ import playlistRoutes from './routes/playlists.js';
 import aiRoutes from './routes/ai.js';
 import commentRoutes from './routes/comments.js';
 import ratingRoutes from './routes/ratings.js';
+import chatRoutes from './routes/chat.js';
 
 config();
 
@@ -24,6 +25,8 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
+app.set('io', io);
+
 app.use('/api/auth', authRoutes);
 app.use('/api/media', mediaRoutes);
 app.use('/api/friends', friendRoutes);
@@ -32,6 +35,7 @@ app.use('/api/playlists', playlistRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/ratings', ratingRoutes);
+app.use('/api/chat', chatRoutes);
 
 connectDB();
 connectRedis();

@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
   watchlist: [{ contentId: String, type: { type: String, enum: ['movie', 'series', 'anime'] } }],
   playlists: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Playlist' }],
   friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+  friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'FriendRequest' }],
   moodHistory: [{ mood: String, timestamp: Date }],
 });
 

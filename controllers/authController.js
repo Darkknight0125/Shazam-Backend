@@ -27,7 +27,7 @@ export const signup = async (req, res) => {
       profilePicture: randomAvatar,
     });
     await user.save();
-    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, user: { id: user._id, username, email, profilePicture: user.profilePicture } });
   } catch (error) {
     res.status(400).json({ error: 'User already exists or invalid data' });
@@ -41,7 +41,7 @@ export const login = async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '7d' });
     res.json({ token, user: { id: user._id, username: user.username, email, profilePicture: user.profilePicture } });
   } catch (error) {
     res.status(500).json({ error: 'Server error' });

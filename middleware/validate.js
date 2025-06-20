@@ -58,3 +58,7 @@ export const ratingSchema = Joi.object({
 export const profileSchema = Joi.object({
   username: Joi.string().min(3).max(30).required(),
 });
+
+export const messageSchema = Joi.object({
+  content: Joi.string().min(1).max(1000).required(),
+});
